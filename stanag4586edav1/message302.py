@@ -23,7 +23,7 @@ class Message302(BigEndianStructure, MessageBase):
         ("eo_sensor_mode_status",                       c_ubyte),
         ("ir_polarity_status",                          c_ubyte),
         ("image_output_state",                          c_ubyte),
-        ("actual_centerline_elevation_angle",           float),
+        ("actual_centerline_elevation_angle",           c_float),
         ("actual_vertical_field_of_view",               c_float),
         ("actual_centerline_azimuth_angle",             c_float),
         ("actual_horizontal_field_of_view",             c_float),
@@ -77,7 +77,7 @@ class Message302_ir_polarity_status(enum.Enum):
     BLACK_HOT = 0
     WHITE_HOT = 0
 
-class Message302_image_output_state(enum.enum):
+class Message302_image_output_state(enum.Enum):
     NONE = 0
     EO = 1
     IR = 2
