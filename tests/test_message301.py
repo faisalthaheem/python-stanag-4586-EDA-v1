@@ -23,23 +23,23 @@ b"\x3f\x80\x00\x00" \
 b"\x3f\x80\x00\x00" 
 
 def test_decode_message301():
-    msg300 = Message301(PACKET_TO_DECODE)
+    msg301 = Message301(PACKET_TO_DECODE)
     
-    assert msg300.time_stamp == 0x00
-    assert msg300.vehicle_id == 0x50
-    assert msg300.cucs_id == 0xA0
-    assert msg300.vsm_id == 0x00
-    assert msg300.station_number == 0x08
-    assert msg300.eo_ir_type == b"\x31\x31"
-    assert msg300.eo_ir_type_revision_level == 0x01
-    assert msg300.eo_vertical_image_dimension == 768
-    assert msg300.eo_horizontal_image_dimension == 1024
-    assert msg300.ir_vertical_image_dimension == 768
-    assert msg300.ir_horizontal_image_dimension == 1024
-    assert msg300.field_of_regard_elevation_min == 1.0
-    assert msg300.field_of_regard_elevation_max == 1.0
-    assert msg300.field_of_regard_azimuth_min == 1.0
-    assert msg300.field_of_regard_azimuth_max == 1.0
+    assert msg301.time_stamp == 0x00
+    assert msg301.vehicle_id == 0x50
+    assert msg301.cucs_id == 0xA0
+    assert msg301.vsm_id == 0x00
+    assert msg301.station_number == 0x08
+    assert msg301.eo_ir_type == b"\x31\x31"
+    assert msg301.eo_ir_type_revision_level == 0x01
+    assert msg301.eo_vertical_image_dimension == 768
+    assert msg301.eo_horizontal_image_dimension == 1024
+    assert msg301.ir_vertical_image_dimension == 768
+    assert msg301.ir_horizontal_image_dimension == 1024
+    assert msg301.field_of_regard_elevation_min == 1.0
+    assert msg301.field_of_regard_elevation_max == 1.0
+    assert msg301.field_of_regard_azimuth_min == 1.0
+    assert msg301.field_of_regard_azimuth_max == 1.0
 
 
 def test_encode_message301():
