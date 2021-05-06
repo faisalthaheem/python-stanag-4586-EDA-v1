@@ -5,7 +5,6 @@
 
 from ctypes import *
 from pprint import pprint
-import enum
 from .message_base import MessageBase
 
 MSG302_NULL = b"\x00"*82
@@ -55,12 +54,12 @@ class Message302(BigEndianStructure, MessageBase):
         pprint(self)
 
 
-class Message302_addressed_sensor(enum.Enum):
+class Message302_addressed_sensor:
     EO = 0x01
     IR = 0x02
     PAYLOAD_SPECIFIC = 0x04
 
-class Message302_system_operating_mode_state(enum.Enum):
+class Message302_system_operating_mode_state:
     STOWED = 0
     OFF = 1
     CAGED = 2
@@ -69,22 +68,22 @@ class Message302_system_operating_mode_state(enum.Enum):
     ACTIVE = 5
     CALIBRATING = 6
 
-class Message302_eo_sensor_mode_status(enum.Enum):
+class Message302_eo_sensor_mode_status:
     BW_MODE = 0
     COLOR_MODE = 1
 
-class Message302_ir_polarity_status(enum.Enum):
+class Message302_ir_polarity_status:
     BLACK_HOT = 0
-    WHITE_HOT = 0
+    WHITE_HOT = 1
 
-class Message302_image_output_state(enum.Enum):
+class Message302_image_output_state:
     NONE = 0
     EO = 1
     IR = 2
     BOTH = 3
     PAYLOAD_SPECIFIC = 4
 
-class Message302_pointing_mode_state(enum.Enum):
+class Message302_pointing_mode_state:
     NO_VALUE = 0
     ANGLE_RELATIVE_TO_UA = 1
     SLEWING_RATE_RELATIVE_TO_UA = 2
@@ -92,18 +91,18 @@ class Message302_pointing_mode_state(enum.Enum):
     LAT_LONG_SLAVED = 4
     TARGET_SLAVED = 5
 
-class Message302_preplan_mode(enum.Enum):
+class Message302_preplan_mode:
     OPERATE_IN_PREPLAN_MODE = 1
     OPERATE_IN_MANUAL_MODE = 2
 
-class Message302_fire_laser_pointer_status(enum.Enum):
+class Message302_fire_laser_pointer_status:
     OFF = 0
     ON_SAFED = 1
     ARMED = 2
     FIRING = 3
     MASKED = 4
 
-class Message302_fire_laser_rangefinder_status(enum.Enum):
+class Message302_fire_laser_rangefinder_status:
     OFF = 0
     ON_SAFED = 1
     ARMED = 2
@@ -111,11 +110,11 @@ class Message302_fire_laser_rangefinder_status(enum.Enum):
     FIRING = 4
     MASKED = 5
 
-class Message302_selected_laser_rangefinder_first_last_pulse(enum.Enum):
+class Message302_selected_laser_rangefinder_first_last_pulse:
     FIRST = 1
     LAST = 2
 
-class Message302_laser_designator_status(enum.Enum):
+class Message302_laser_designator_status:
     OFF = 0
     ON  = 1
     ARMED = 2
