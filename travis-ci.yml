@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.8"
+cache: pip
+install:
+  - pip install -r requirements.txt
+script:
+  - python setup.py pytest
+  - python setup.py bdist
+deploy:
+  provider: pypi
+  username: __token__
+  password: $PYPI_PRODUCTION_TOKEN
+  on:
+    branch: master

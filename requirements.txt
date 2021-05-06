@@ -1,0 +1,3 @@
+prettyprint
+pytest
+pytest-runner
