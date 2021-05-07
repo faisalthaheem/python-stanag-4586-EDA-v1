@@ -1,7 +1,9 @@
 # Python package for STANAG 4586 Edition A Version 1
 ## Tested with python 3.8+
 
-![build status](https://travis-ci.com/faisalthaheem/python-stanag-4586-EDA-v1.svg?branch=main)
+Published branch | Development branch
+--- | ---
+![build status main branch](https://travis-ci.com/faisalthaheem/python-stanag-4586-EDA-v1.svg?branch=main) | ![build status development branch](https://travis-ci.com/faisalthaheem/python-stanag-4586-EDA-v1.svg?branch=development)
 
 This repository conotains code that will enable encoding/decoding of STANAG messages.
 So far the following messages have been implemented which should enable basic communication with a platform, messages are being continually added, please check back soon for updates.
