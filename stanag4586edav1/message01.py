@@ -7,7 +7,7 @@ from ctypes import *
 from pprint import pprint
 
 MSG01_NULL = b"\x00"*35
-
+MSG_01_BROADCAST_ID = 0xFFFFFFFF
 class Message01(BigEndianStructure):
     _pack_ = 1
     _fields_ = [
@@ -35,3 +35,15 @@ class Message01(BigEndianStructure):
 
     def dump(self):
         pprint(self)
+
+    def make_discovery_message(self, cucs_id):
+        self.vehicle_id = MSG_01_BROADCAST_ID
+        self.cucs_id = cucs_id
+        self.vsm_id = MSG_01_BROADCAST_ID
+        self.data_link_id = 0
+        self.vehicle_type = 0
+        self.vehicle_sub_type = 0
+        self.requested_handover_loi = 0
+        self.controlled_station = MSG_01_BROADCAST_ID
+        self.controlled_station_mode = 0
+        self.wait_for_vehicle_data_link_transition_coordination_message = 0
