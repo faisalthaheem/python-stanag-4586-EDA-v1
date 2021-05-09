@@ -11,6 +11,8 @@ from stanag4586edav1.message01 import *
 PACKET_TO_DECODE = b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x50\x00\x00\x00\xA0\x00\x00\x00\x00" \
 b"\x00\x00\x00\x00\x00\x39\x00\x00\x01\x00\x00\x00\x00\x01\x00"
 
+PACKET_DISCOVERY_MSG = b'\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xfa\xfa\xfa\xfa\xff\xff\xff' \
+b'\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\x00\x00'
 
 def test_decode_message01():
     msg01 = Message01(PACKET_TO_DECODE)
@@ -43,3 +45,9 @@ def test_encode_message01():
     msg01.wait_for_vehicle_data_link_transition_coordination_message = 0x00
 
     assert msg01.encode() == PACKET_TO_DECODE
+
+def test_make_discovery_message():
+    msg01 = Message01(MSG01_NULL)
+    msg01.make_discovery_message(0xFAFAFAFA)
+
+    assert msg01.encode() == PACKET_DISCOVERY_MSG
