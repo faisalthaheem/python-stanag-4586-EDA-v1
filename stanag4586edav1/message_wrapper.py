@@ -7,7 +7,7 @@ from ctypes import *
 from pprint import pprint
 
 MESSAGE_WRAPPER_NULL = b"\x00" * 30
-
+MESSAGE_WRAPPER_LEN = 30
 class MessageWrapper(BigEndianStructure):
     _pack_ = 1
     _fields_ = [
