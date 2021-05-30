@@ -8,6 +8,11 @@ from pprint import pprint
 
 MSG01_NULL = b"\x00"*35
 MSG_01_BROADCAST_ID = 0xFFFFFFFF
+
+LOI_02 = 0x01 #Monitoring the UA / PL
+LOI_03 = 0x02 #Controlling the PL
+LOI_04 = 0x04 #Controlling the UA without takeoff/landing
+LOI_05 = 0x08 #Controlling the UA with takeoff/landing
 class Message01(BigEndianStructure):
     _pack_ = 1
     _fields_ = [
