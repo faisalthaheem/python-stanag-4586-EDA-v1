@@ -30,10 +30,14 @@ class MessageWrapper(BigEndianStructure):
     def dump(self):
         pprint(self)
 
-    def wrap_message(self, instance_id, type, length, ack_needed):
+    def wrap_message(self, instance_id, type, msg, ack_needed):
+        encoded_payload = msg.encode()
+
         self.idd_version = b"\x31\x32"
         self.msg_instance_id = instance_id
         self.message_type = type
-        self.message_length = length
+        self.message_length = len(encoded_payload)
         self.stream_id = 0
         self.message_properties = 1 if ack_needed else 0
+
+        return self.encode() + encoded_payload
