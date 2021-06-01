@@ -1,5 +1,5 @@
 # Python package for STANAG 4586 Edition A Version 1
-## Tested with python 3.8+
+## Tested with python 3.8x
 
 Published branch | Development branch
 --- | ---
@@ -15,6 +15,15 @@ So far the following messages have been implemented which should enable basic co
 - 301
 - 302
 - 1200
+
+> _*See further below for simple usage.*_
+
+# Important note
+
+ Please note this is a low level library and does not provide any network I/O or message assembly/disassembly.
+
+Take a look at the [python-stanag-4586-vsm](https://github.com/faisalthaheem/python-stanag-4586-vsm) library which provides a basic implementation of a vehicle specific module (VSM) and uses this library to respond to discover, authorization and control messages.
+
 
 # Simple usage example
 Assuming you would have already parsed the message wrapper and know what message is contained in the byte array, save the following in a file called stanag-test.py
