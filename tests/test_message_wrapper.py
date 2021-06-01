@@ -4,6 +4,7 @@
 """
 
 from stanag4586edav1.message_wrapper import *
+from stanag4586edav1.message01 import *
 
 PACKET_TO_DECODE = b"\x31\x32\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xAA\x00\x00" \
 b"\x00\x01\x00\x00\x00\xCC\x00\x00\x00\xBB\x00\x00\x00\xAA"
@@ -32,10 +33,13 @@ def test_encode_wrapper():
     assert wrapper.encode() == PACKET_TO_DECODE
 
 def test_wrap_message():
+    
+    msg01 = Message01(MSG01_NULL)
+
     wrapper = MessageWrapper(MESSAGE_WRAPPER_NULL)
-    wrapper.wrap_message(1, 0x21, 100, True)
+    wrapper.wrap_message(1, 0x21, msg01, True)
 
     assert wrapper.msg_instance_id == 1
     assert wrapper.message_type == 0x21
-    assert wrapper.message_length == 100
+    assert wrapper.message_length == 35
     assert wrapper.message_properties == 1
