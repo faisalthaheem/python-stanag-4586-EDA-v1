@@ -11,6 +11,7 @@ So far the following messages have been implemented which should enable basic co
 - 01
 - 20
 - 21
+- 200
 - 300
 - 301
 - 302
