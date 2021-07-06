@@ -16,6 +16,7 @@ So far the following messages have been implemented which should enable basic co
 - 301
 - 302
 - 1200
+- 20000 [Custom message for EO Pan and Tilt functionality]
 
 > _*See further below for simple usage.*_
 
