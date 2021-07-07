@@ -25,6 +25,7 @@ class Message20000(BigEndianStructure, MessageBase):
         ("time_stamp",                          c_double),
         ("vehicle_id",                          c_int32),
         ("cucs_id",                             c_int32),
+        ("station_number",                      c_uint32),
         ("pan_force",                           c_float),
         ("pan_direction",                       c_byte),
         ("tilt_force",                          c_float),
