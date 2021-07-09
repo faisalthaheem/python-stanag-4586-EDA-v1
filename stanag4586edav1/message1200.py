@@ -7,9 +7,10 @@ from ctypes import *
 from pprint import pprint
 from .message_base import MessageBase
 
-MSG1200_NULL = b"\x00"*35
-
 class Message1200(BigEndianStructure, MessageBase):
+    MSGLEN  = 35
+    MSGNULL = b"\x00" * MSGLEN
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",              c_double),
@@ -28,7 +29,7 @@ class Message1200(BigEndianStructure, MessageBase):
         return cls.from_buffer_copy(byte_buffer)
 
     def __init__(self, byte_buffer=None):
-        pass
+        self.has_station_number_field = True
 
     def encode(self):
         return bytes(self)

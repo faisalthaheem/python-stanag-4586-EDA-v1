@@ -4,6 +4,9 @@
 """
 
 class MessageBase:
+    """a convenience field to help filter messages at other stages"""
+    has_station_number_field = False
+
     def set_string_field(self, field_name, field_max_length, field_value):
 
         if len(field_value) > field_max_length or len(field_value) == 0:

@@ -6,9 +6,11 @@
 from ctypes import *
 from pprint import pprint
 
-MESSAGE_WRAPPER_NULL = b"\x00" * 30
-MESSAGE_WRAPPER_LEN = 30
 class MessageWrapper(BigEndianStructure):
+    
+    MSGLEN  = 30
+    MSGNULL = b"\x00" * MSGLEN
+
     _pack_ = 1
     _fields_ = [
         ("idd_version",             c_char*10),

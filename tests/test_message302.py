@@ -67,7 +67,7 @@ def test_decode_message302():
  
 
 def test_encode_message302():
-    msg302 = Message302(MSG302_NULL)
+    msg302 = Message302(Message302.MSGNULL)
 
     msg302.time_stamp = 0x00
     msg302.vehicle_id = 0x50

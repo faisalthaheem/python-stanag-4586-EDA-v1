@@ -7,9 +7,10 @@ from ctypes import *
 from pprint import pprint
 from .message_base import MessageBase
 
-MSG20_NULL = b"\x00"*99
-
 class Message20(BigEndianStructure, MessageBase):
+    MSGLEN  = 99
+    MSGNULL = b"\x00" * MSGLEN
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",              c_double),
@@ -25,7 +26,7 @@ class Message20(BigEndianStructure, MessageBase):
         ("atc_call_sign",           c_char*32),
         ("configuration_checksum",  c_ushort),
       ]
-    
+
     def __new__(cls, byte_buffer=None):
         return cls.from_buffer_copy(byte_buffer)
 

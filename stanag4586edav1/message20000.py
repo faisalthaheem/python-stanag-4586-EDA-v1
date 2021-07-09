@@ -7,19 +7,21 @@ from ctypes import *
 from pprint import pprint
 from .message_base import MessageBase
 
-MSG20000_NULL = b"\x00"*68
-
-MSG20000_PAN_DIRECTION_LEFT = -1
-MSG20000_PAN_DIRECTION_NONE = 0
-MSG20000_PAN_DIRECTION_RIGHT = 1
-
-MSG20000_TILT_DIRECTION_UP = 1
-MSG20000_TILT_DIRECTION_NONE = 0
-MSG20000_TILT_DIRECTION_DOWN = -1
 
 class Message20000(BigEndianStructure, MessageBase):
     """Custom Message 20000 for continually Panning and Tilting EO payloads"""
     
+    MSGLEN  = 30
+    MSGNULL = b"\x00" * MSGLEN
+
+    PAN_DIRECTION_LEFT = -1
+    PAN_DIRECTION_NONE = 0
+    PAN_DIRECTION_RIGHT = 1
+
+    TILT_DIRECTION_UP = 1
+    TILT_DIRECTION_NONE = 0
+    TILT_DIRECTION_DOWN = -1
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",                          c_double),
@@ -36,7 +38,7 @@ class Message20000(BigEndianStructure, MessageBase):
         return cls.from_buffer_copy(byte_buffer)
 
     def __init__(self, byte_buffer=None):
-        pass
+        self.has_station_number_field = True
 
     def encode(self):
         return bytes(self)

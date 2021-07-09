@@ -7,9 +7,10 @@ from ctypes import *
 from pprint import pprint
 from .message_base import MessageBase
 
-MSG21_NULL = b"\x00"*35
-
 class Message21(BigEndianStructure, MessageBase):
+    MSGLEN  = 35
+    MSGNULL = b"\x00" * MSGLEN
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",              c_double),

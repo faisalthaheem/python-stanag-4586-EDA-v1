@@ -46,7 +46,7 @@ def test_decode_message200():
     assert msg200.focus_type == 1
 
 def test_encode_message200():
-    msg200 = Message200(MSG200_NULL)
+    msg200 = Message200(Message200.MSGNULL)
 
     msg200.time_stamp = 0x00
     msg200.vehicle_id = 0x50
@@ -54,7 +54,7 @@ def test_encode_message200():
     msg200.station_number = 0x01
     msg200.set_centreline_azimuth_angle = 33.0
     msg200.set_centreline_elevation_angle = 33.0
-    msg200.set_zoom = 0x03
+    msg200.set_zoom = Message200.SET_ZOOM_ZOOM_OUT
     msg200.set_horizontal_fov = 33.0
     msg200.set_vertical_fov = 33.0
     msg200.horizontal_slew_rate = 33.0
@@ -62,8 +62,8 @@ def test_encode_message200():
     msg200.latitude = 25.0
     msg200.longitude = 25.0
     msg200.altitude = 33.0
-    msg200.altitude_type = 2
+    msg200.altitude_type = Message200.ALTITUDE_TYPE_AGL
     msg200.set_focus = 1
-    msg200.focus_type = 1
+    msg200.focus_type = Message200.FOCUS_TYPE_MANUAL
 
     assert msg200.encode() == PACKET_TO_DECODE
