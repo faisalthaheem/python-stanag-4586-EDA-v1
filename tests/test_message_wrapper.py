@@ -19,7 +19,7 @@ def test_decode_wrapper():
     assert wrapper.message_properties == 0xAA
 
 def test_encode_wrapper():
-    wrapper = MessageWrapper(MESSAGE_WRAPPER_NULL)
+    wrapper = MessageWrapper(MessageWrapper.MSGNULL)
     
     assert wrapper.msg_instance_id == 0x00
 
@@ -34,12 +34,12 @@ def test_encode_wrapper():
 
 def test_wrap_message():
     
-    msg01 = Message01(MSG01_NULL)
+    msg01 = Message01(Message01.MSGNULL)
 
-    wrapper = MessageWrapper(MESSAGE_WRAPPER_NULL)
-    wrapper.wrap_message(1, 0x21, msg01, True)
+    wrapper = MessageWrapper(MessageWrapper.MSGNULL)
+    wrapper.wrap_message(1, 1, msg01, True)
 
     assert wrapper.msg_instance_id == 1
-    assert wrapper.message_type == 0x21
-    assert wrapper.message_length == 35
+    assert wrapper.message_type == 1
+    assert wrapper.message_length == Message01.MSGLEN
     assert wrapper.message_properties == 1

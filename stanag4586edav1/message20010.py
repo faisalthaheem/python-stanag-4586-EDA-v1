@@ -7,35 +7,23 @@ from ctypes import *
 from pprint import pprint
 from .message_base import MessageBase
 
-class Message300(BigEndianStructure, MessageBase):
+
+class Message20010(BigEndianStructure, MessageBase):
+    """Custom Message 20010 for querying stations"""
     
-    MSGLEN  = 31
+    MSGLEN  = 21
     MSGNULL = b"\x00" * MSGLEN
 
-    STATION_TYPE_UNSPECIFIED = 0x00
-    STATION_TYPE_EO = 0x01
-    STATION_TYPE_IR = 0x02
-    STATION_TYPE_EOIR = 0x03
-    STATION_TYPE_SAR = 0x04
-    STATION_TYPE_FIXED_CAMERA = 0x05
-    STATION_TYPE_COMMS_RELAY = 0x06
-    STATION_TYPE_DISPENSABLE_PAYLOAD = 0x07
-    STATION_TYPE_RECORDER = 0x08
-    STATION_TYPE_PAYLOAD_BAY_DOOR = 0x09
-    STATION_TYPE_CBRN = 0x0A
-    STATION_TYPE_SMS = 0x0B
-    
+    QUERY_TYPE_SEND_STATION_TYPE = 10
+    QUERY_TYPE_SEND_CONFIG = 20
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",                          c_double),
         ("vehicle_id",                          c_int32),
         ("cucs_id",                             c_int32),
-        ("vsm_id",                              c_int32),
-        ("payload_stations_available",          c_uint32),
         ("station_number",                      c_uint32),
-        ("payload_type",                        c_ubyte),
-        ("station_door",                        c_ubyte),
-        ("number_of_payload_recording_devices", c_ubyte),
+        ("query_type",                          c_byte)
       ]
     
     def __new__(cls, byte_buffer=None):

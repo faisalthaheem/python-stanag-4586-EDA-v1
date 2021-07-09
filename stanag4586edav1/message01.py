@@ -6,14 +6,16 @@
 from ctypes import *
 from pprint import pprint
 
-MSG01_NULL = b"\x00"*35
-MSG_01_BROADCAST_ID = 0xFFFFFFFF
-
-LOI_02 = 0x01 #Monitoring the UA / PL
-LOI_03 = 0x02 #Controlling the PL
-LOI_04 = 0x04 #Controlling the UA without takeoff/landing
-LOI_05 = 0x08 #Controlling the UA with takeoff/landing
 class Message01(BigEndianStructure):
+    MSGLEN  = 35
+    MSGNULL = b"\x00" * MSGLEN
+
+    BROADCAST_ID = 0xFFFFFFFF
+    LOI_02 = 0x01 #Monitoring the UA / PL
+    LOI_03 = 0x02 #Controlling the PL
+    LOI_04 = 0x04 #Controlling the UA without takeoff/landing
+    LOI_05 = 0x08 #Controlling the UA with takeoff/landing
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",              c_double),
@@ -42,13 +44,13 @@ class Message01(BigEndianStructure):
         pprint(self)
 
     def make_discovery_message(self, cucs_id):
-        self.vehicle_id = MSG_01_BROADCAST_ID
+        self.vehicle_id = self.BROADCAST_ID
         self.cucs_id = cucs_id
-        self.vsm_id = MSG_01_BROADCAST_ID
+        self.vsm_id = self.BROADCAST_ID
         self.data_link_id = 0
         self.vehicle_type = 0
         self.vehicle_sub_type = 0
         self.requested_handover_loi = 0
-        self.controlled_station = MSG_01_BROADCAST_ID
+        self.controlled_station = self.BROADCAST_ID
         self.controlled_station_mode = 0
         self.wait_for_vehicle_data_link_transition_coordination_message = 0

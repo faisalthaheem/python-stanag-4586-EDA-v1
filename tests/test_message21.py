@@ -34,7 +34,7 @@ def test_decode_message21():
     assert msg21.vehicle_sub_type == 0x3132
 
 def test_encode_message01():
-    msg21 = Message21(MSG21_NULL)
+    msg21 = Message21(Message21.MSGNULL)
 
     msg21.time_stamp = 0x00
     msg21.vehicle_id = 0x50

@@ -23,20 +23,20 @@ def test_decode_message20000():
     assert msg20000.cucs_id == 0xA0
     assert msg20000.station_number == 0x01
     assert msg20000.pan_force == pytest.approx(33.0)
-    assert msg20000.pan_direction == MSG20000_PAN_DIRECTION_RIGHT
+    assert msg20000.pan_direction == Message20000.PAN_DIRECTION_RIGHT
     assert msg20000.tilt_force == pytest.approx(33.0)
-    assert msg20000.tilt_direction == MSG20000_TILT_DIRECTION_DOWN
+    assert msg20000.tilt_direction == Message20000.TILT_DIRECTION_DOWN
 
-def test_encode_message200():
-    msg20000 = Message20000(MSG20000_NULL)
+def test_encode_message20000():
+    msg20000 = Message20000(Message20000.MSGNULL)
     
     msg20000.time_stamp = 0x00
     msg20000.vehicle_id = 0x50
     msg20000.cucs_id = 0xA0
     msg20000.station_number = 0x01
     msg20000.pan_force = 33.0
-    msg20000.pan_direction = MSG20000_PAN_DIRECTION_RIGHT
+    msg20000.pan_direction = Message20000.PAN_DIRECTION_RIGHT
     msg20000.tilt_force = 33.0
-    msg20000.tilt_direction = MSG20000_TILT_DIRECTION_DOWN
+    msg20000.tilt_direction = Message20000.TILT_DIRECTION_DOWN
 
     assert msg20000.encode() == PACKET_TO_DECODE

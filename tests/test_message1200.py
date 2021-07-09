@@ -33,7 +33,7 @@ def test_decode_message1200():
     assert msg1200.sensor_select == 0x03
 
 def test_encode_message01():
-    msg1200 = Message1200(MSG1200_NULL)
+    msg1200 = Message1200(Message1200.MSGNULL)
 
     msg1200.time_stamp = 0x00
     msg1200.vehicle_id = 0x50

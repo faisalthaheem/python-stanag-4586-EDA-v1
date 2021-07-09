@@ -43,7 +43,7 @@ def test_decode_message301():
 
 
 def test_encode_message301():
-    msg301 = Message301(MSG301_NULL)
+    msg301 = Message301(Message301.MSGNULL)
 
     msg301.time_stamp = 0x00
     msg301.vehicle_id = 0x50
@@ -64,7 +64,7 @@ def test_encode_message301():
     assert msg301.encode() == PACKET_TO_DECODE
 
 def test_set_get_eo_ir_type():
-    msg301 = Message301(MSG301_NULL)
+    msg301 = Message301(Message301.MSGNULL)
 
     ID_TO_TEST = "valid id"
     assert msg301.set_eo_ir_type(ID_TO_TEST) == True
@@ -72,13 +72,13 @@ def test_set_get_eo_ir_type():
     assert msg301.get_eo_ir_type() == ID_TO_TEST
 
 def test_set_get_eo_ir_type_exceeding_length():
-    msg301 = Message301(MSG301_NULL)
+    msg301 = Message301(Message301.MSGNULL)
 
     ID_TO_TEST = "valid id valid id valid id valid id"
     assert msg301.set_eo_ir_type(ID_TO_TEST) == False
 
 def test_set_get_eo_ir_type_zero_length():
-    msg301 = Message301(MSG301_NULL)
+    msg301 = Message301(Message301.MSGNULL)
 
     ID_TO_TEST = ""
     assert msg301.set_eo_ir_type(ID_TO_TEST) == False

@@ -41,7 +41,7 @@ def test_decode_message20():
     assert msg20.configuration_checksum == 0xABCD
 
 def test_encode_message20():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     msg20.time_stamp = 0x00
     msg20.vehicle_id = 0x50
@@ -62,55 +62,55 @@ def test_encode_message20():
 ####
 #### Tail number
 def test_encode_decode_tail_number():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     msg20.set_tail_number('99876')
     assert '99876' == msg20.get_tail_number()
 
 def test_encode_tail_number_exceeding_field_length():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     assert False == msg20.set_tail_number('12345678901234567')
     
 def test_encode_tail_number_0_field_length():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     assert False == msg20.set_tail_number('')
     
 ####
 #### Mission id
 def test_encode_decode_mission_id():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     mission_id = 'ALPHA FOXTROT'
     msg20.set_mission_id(mission_id)
     assert mission_id == msg20.get_mission_id()
 
 def test_encode_mission_id_exceeding_field_length():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     assert False == msg20.set_mission_id('123456789012345678901')
     
 def test_encode_mission_id_0_field_length():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     assert False == msg20.set_mission_id('')
 
 ####
 #### ATC call sign
 def test_encode_decode_mission_id():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     atc_call_sign = 'CHARLIE TANGO'
     msg20.set_atc_call_sign(atc_call_sign)
     assert atc_call_sign == msg20.get_atc_call_sign()
 
 def test_encode_mission_id_exceeding_field_length():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     assert False == msg20.set_atc_call_sign('123456789012345678901234567890123')
     
 def test_encode_mission_id_0_field_length():
-    msg20 = Message20(MSG20_NULL)
+    msg20 = Message20(Message20.MSGNULL)
 
     assert False == msg20.set_atc_call_sign('')

@@ -12,7 +12,7 @@ README = (HERE / "README.md").read_text()
 setup(
     name='stanag4586edav1',
     packages=find_packages(include=['stanag4586edav1']),
-    version='0.0.9',
+    version='0.0.10',
     description='Python Stanag 4586 Edition A v1',
     long_description=README,
     long_description_content_type="text/markdown",

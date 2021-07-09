@@ -7,30 +7,31 @@ from ctypes import *
 from pprint import pprint
 from .message_base import MessageBase
 
-MSG200_NULL = b"\x00"*68
-
-#Constants for set zoom field
-MSG200_SET_ZOOM_USE_HV_FOV = 0
-MSG200_SET_ZOOM_STOP_ZOOM = 1
-MSG200_SET_ZOOM_ZOOM_IN = 2
-MSG200_SET_ZOOM_ZOOM_OUT = 3
-
-#Constants for Altitude type field
-MSG200_ALTITUDE_TYPE_PRESSURE = 0
-MSG200_ALTITUDE_TYPE_BARO = 1
-MSG200_ALTITUDE_TYPE_AGL = 2
-MSG200_ALTITUDE_TYPE_WSG84 = 3
-
-#Constants for set focus field
-MSG200_SET_FOCUS_NO_CHANGE = 0
-MSG200_SET_FOCUS_FOCUS_CLOSER = 1
-MSG200_SET_FOCUS_FOCUS_FARTHER = 2
-
-#Constants for focus type field
-MSG200_FOCUS_TYPE_AUTO = 0
-MSG200_FOCUS_TYPE_MANUAL = 1
-
 class Message200(BigEndianStructure, MessageBase):
+    MSGLEN  = 68
+    MSGNULL = b"\x00" * MSGLEN
+
+    #Constants for set zoom field
+    SET_ZOOM_USE_HV_FOV = 0
+    SET_ZOOM_STOP_ZOOM = 1
+    SET_ZOOM_ZOOM_IN = 2
+    SET_ZOOM_ZOOM_OUT = 3
+
+    #Constants for Altitude type field
+    ALTITUDE_TYPE_PRESSURE = 0
+    ALTITUDE_TYPE_BARO = 1
+    ALTITUDE_TYPE_AGL = 2
+    ALTITUDE_TYPE_WSG84 = 3
+
+    #Constants for set focus field
+    SET_FOCUS_NO_CHANGE = 0
+    SET_FOCUS_FOCUS_CLOSER = 1
+    SET_FOCUS_FOCUS_FARTHER = 2
+
+    #Constants for focus type field
+    FOCUS_TYPE_AUTO = 0
+    FOCUS_TYPE_MANUAL = 1
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",                          c_double),
@@ -56,7 +57,7 @@ class Message200(BigEndianStructure, MessageBase):
         return cls.from_buffer_copy(byte_buffer)
 
     def __init__(self, byte_buffer=None):
-        pass
+        self.has_station_number_field = True
 
     def encode(self):
         return bytes(self)

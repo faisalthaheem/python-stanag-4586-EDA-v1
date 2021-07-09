@@ -30,7 +30,7 @@ def test_decode_message01():
     assert msg01.wait_for_vehicle_data_link_transition_coordination_message == 0x00
 
 def test_encode_message01():
-    msg01 = Message01(MSG01_NULL)
+    msg01 = Message01(Message01.MSGNULL)
 
     msg01.time_stamp = 0x00
     msg01.vehicle_id = 0x50
@@ -47,7 +47,7 @@ def test_encode_message01():
     assert msg01.encode() == PACKET_TO_DECODE
 
 def test_make_discovery_message():
-    msg01 = Message01(MSG01_NULL)
+    msg01 = Message01(Message01.MSGNULL)
     msg01.make_discovery_message(0xFAFAFAFA)
 
     assert msg01.encode() == PACKET_DISCOVERY_MSG
