@@ -11,6 +11,10 @@ class Message21(BigEndianStructure, MessageBase):
     MSGLEN  = 35
     MSGNULL = b"\x00" * MSGLEN
 
+    CONTROLLED_STATION_MODE_NOT_IN_CONTROL = 0
+    CONTROLLED_STATION_MODE_IN_CONTROL = 1
+
+
     _pack_ = 1
     _fields_ = [
         ("time_stamp",              c_double),
