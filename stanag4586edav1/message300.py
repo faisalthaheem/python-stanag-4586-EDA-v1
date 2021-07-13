@@ -12,18 +12,18 @@ class Message300(BigEndianStructure, MessageBase):
     MSGLEN  = 31
     MSGNULL = b"\x00" * MSGLEN
 
-    STATION_TYPE_UNSPECIFIED = 0x00
-    STATION_TYPE_EO = 0x01
-    STATION_TYPE_IR = 0x02
-    STATION_TYPE_EOIR = 0x03
-    STATION_TYPE_SAR = 0x04
-    STATION_TYPE_FIXED_CAMERA = 0x05
-    STATION_TYPE_COMMS_RELAY = 0x06
-    STATION_TYPE_DISPENSABLE_PAYLOAD = 0x07
-    STATION_TYPE_RECORDER = 0x08
-    STATION_TYPE_PAYLOAD_BAY_DOOR = 0x09
-    STATION_TYPE_CBRN = 0x0A
-    STATION_TYPE_SMS = 0x0B
+    PAYLOAD_TYPE_UNSPECIFIED = 0x00
+    PAYLOAD_TYPE_EO = 0x01
+    PAYLOAD_TYPE_IR = 0x02
+    PAYLOAD_TYPE_EOIR = 0x03
+    PAYLOAD_TYPE_SAR = 0x04
+    PAYLOAD_TYPE_FIXED_CAMERA = 0x05
+    PAYLOAD_TYPE_COMMS_RELAY = 0x06
+    PAYLOAD_TYPE_DISPENSABLE_PAYLOAD = 0x07
+    PAYLOAD_TYPE_RECORDER = 0x08
+    PAYLOAD_TYPE_PAYLOAD_BAY_DOOR = 0x09
+    PAYLOAD_TYPE_CBRN = 0x0A
+    PAYLOAD_TYPE_SMS = 0x0B
     
     _pack_ = 1
     _fields_ = [
@@ -49,3 +49,31 @@ class Message300(BigEndianStructure, MessageBase):
 
     def dump(self):
         pprint(self)
+
+    def payload_type_to_str(self, pl_type):
+        str_type = "unspecified"
+
+        if pl_type == self.PAYLOAD_TYPE_EO:
+            str_type = "EO"
+        elif pl_type == self.PAYLOAD_TYPE_IR:
+            str_type = "IR"
+        elif pl_type == self.PAYLOAD_TYPE_EOIR:
+            str_type = "EO/IR"
+        elif pl_type == self.PAYLOAD_TYPE_SAR:
+            str_type = "SAR"
+        elif pl_type == self.PAYLOAD_TYPE_FIXED_CAMERA:
+            str_type = "FIXED CAMERA"
+        elif pl_type == self.PAYLOAD_TYPE_COMMS_RELAY:
+            str_type = "COMMS RELAY"
+        elif pl_type == self.PAYLOAD_TYPE_DISPENSABLE_PAYLOAD:
+            str_type = "DISPENSABLE PAYLOAD"
+        elif pl_type == self.PAYLOAD_TYPE_RECORDER:
+            str_type = "RECORDER"
+        elif pl_type == self.PAYLOAD_TYPE_PAYLOAD_BAY_DOOR:
+            str_type = "PAYLOAD BAY DOOR"
+        elif pl_type == self.PAYLOAD_TYPE_CBRN:
+            str_type = "CBRN"
+        elif pl_type == self.PAYLOAD_TYPE_SMS:
+            str_type = "SMS"                    
+        
+        return str_type

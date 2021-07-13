@@ -16,7 +16,9 @@ So far the following messages have been implemented which should enable basic co
 - 301
 - 302
 - 1200
-- 20000 [Custom message for EO Pan and Tilt functionality]
+- 20000 [Private message for EO Pan and Tilt functionality]
+- 20010 [Private message for query request]
+- 20020 [Private message for query response]
 
 > _*See further below for simple usage.*_
 

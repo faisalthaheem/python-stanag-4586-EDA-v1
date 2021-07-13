@@ -25,7 +25,7 @@ def test_decode_message300():
     assert msg300.vsm_id == 0x00
     assert msg300.payload_stations_available == 0x08
     assert msg300.station_number == 0x08
-    assert msg300.payload_type == Message300.STATION_TYPE_EO
+    assert msg300.payload_type == Message300.PAYLOAD_TYPE_EO
     assert msg300.station_door == 0x01
     assert msg300.number_of_payload_recording_devices == 0x01
 
@@ -38,7 +38,7 @@ def test_encode_message300():
     msg300.vsm_id = 0x00
     msg300.payload_stations_available = 0x08
     msg300.station_number = 0x08
-    msg300.payload_type = Message300.STATION_TYPE_EO
+    msg300.payload_type = Message300.PAYLOAD_TYPE_EO
     msg300.station_door = 0x01
     msg300.number_of_payload_recording_devices = 0x01
 
