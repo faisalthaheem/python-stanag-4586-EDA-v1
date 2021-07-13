@@ -50,3 +50,33 @@ class Message21(BigEndianStructure, MessageBase):
 
     def dump(self):
         pprint(self)
+
+    def vehicle_type_to_str(self, vehicle_type):
+
+        str_type = "unknown"
+
+        if vehicle_type == self.VEHICLE_TYPE_UAV:
+            str_type = "UAV"
+        elif vehicle_type == self.VEHICLE_TYPE_UGV:
+            str_type = "UGV"
+        elif vehicle_type == self.VEHICLE_TYPE_USV:
+            str_type = "USV"
+        elif vehicle_type == self.VEHICLE_TYPE_UUV:
+            str_type = "UUV"
+
+        return str_type
+
+    def vehicle_sub_type_to_str(self, vehicle_sub_type):
+
+        str_type = "unknown"
+
+        if vehicle_sub_type == self.UGV_SUB_TYPE_MULE:
+            str_type = "MULE"
+        elif vehicle_sub_type == self.UGV_SUB_TYPE_SURV:
+            str_type = "SURVEILLANCE"
+        elif vehicle_sub_type == self.UGV_SUB_TYPE_SENTRY:
+            str_type = "SENTRY"
+        elif vehicle_sub_type == self.UGV_SUB_TYPE_SAM:
+            str_type = "SAM"
+
+        return str_type
