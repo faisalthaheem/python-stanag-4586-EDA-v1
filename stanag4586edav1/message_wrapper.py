@@ -4,9 +4,8 @@
 """
 
 from ctypes import *
-from pprint import pprint
-
-class MessageWrapper(BigEndianStructure):
+from .message_base import MessageBase
+class MessageWrapper(MessageBase):
     
     MSGLEN  = 30
     MSGNULL = b"\x00" * MSGLEN
@@ -29,8 +28,8 @@ class MessageWrapper(BigEndianStructure):
     def encode(self):
         return bytes(self)
 
-    def dump(self):
-        pprint(self)
+    def getStationId(self):
+       return None 
 
     def wrap_message(self, instance_id, type, msg, ack_needed):
         encoded_payload = msg.encode()

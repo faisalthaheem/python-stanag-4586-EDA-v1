@@ -4,10 +4,9 @@
 """
 
 from ctypes import *
-from pprint import pprint
 from .message_base import MessageBase
 
-class Message20(BigEndianStructure, MessageBase):
+class Message20(MessageBase):
     MSGLEN  = 99
     MSGNULL = b"\x00" * MSGLEN
 
@@ -36,8 +35,8 @@ class Message20(BigEndianStructure, MessageBase):
     def encode(self):
         return bytes(self)
 
-    def dump(self):
-        pprint(self)
+    def getStationId(self):
+       return None 
 
     def get_tail_number(self):
         return self.get_string_field("tail_number")

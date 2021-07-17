@@ -4,10 +4,9 @@
 """
 
 from ctypes import *
-from pprint import pprint
 from .message_base import MessageBase
 
-class Message200(BigEndianStructure, MessageBase):
+class Message200(MessageBase):
     MSGLEN  = 68
     MSGNULL = b"\x00" * MSGLEN
 
@@ -57,10 +56,10 @@ class Message200(BigEndianStructure, MessageBase):
         return cls.from_buffer_copy(byte_buffer)
 
     def __init__(self, byte_buffer=None):
-        self.has_station_number_field = True
+        pass
 
     def encode(self):
         return bytes(self)
 
-    def dump(self):
-        pprint(self)
+    def getStationId(self):
+       return self.station_number
