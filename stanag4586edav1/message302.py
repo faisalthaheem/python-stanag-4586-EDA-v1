@@ -4,10 +4,9 @@
 """
 
 from ctypes import *
-from pprint import pprint
 from .message_base import MessageBase
 
-class Message302(BigEndianStructure, MessageBase):
+class Message302(MessageBase):
     MSGLEN  = 82
     MSGNULL = b"\x00" * MSGLEN
 
@@ -46,13 +45,13 @@ class Message302(BigEndianStructure, MessageBase):
         return cls.from_buffer_copy(byte_buffer)
 
     def __init__(self, byte_buffer=None):
-        self.has_station_number_field = True
+        pass
 
     def encode(self):
         return bytes(self)
 
-    def dump(self):
-        pprint(self)
+    def getStationId(self):
+       return self.station_number 
 
 
 class Message302_addressed_sensor:

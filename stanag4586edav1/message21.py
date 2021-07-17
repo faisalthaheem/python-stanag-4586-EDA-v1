@@ -4,10 +4,9 @@
 """
 
 from ctypes import *
-from pprint import pprint
 from .message_base import MessageBase
 
-class Message21(BigEndianStructure, MessageBase):
+class Message21(MessageBase):
     MSGLEN  = 35
     MSGNULL = b"\x00" * MSGLEN
 
@@ -48,8 +47,8 @@ class Message21(BigEndianStructure, MessageBase):
     def encode(self):
         return bytes(self)
 
-    def dump(self):
-        pprint(self)
+    def getStationId(self):
+       return self.controlled_station 
 
     def vehicle_type_to_str(self, vehicle_type):
 

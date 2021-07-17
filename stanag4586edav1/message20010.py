@@ -4,11 +4,10 @@
 """
 
 from ctypes import *
-from pprint import pprint
 from .message_base import MessageBase
 
 
-class Message20010(BigEndianStructure, MessageBase):
+class Message20010(MessageBase):
     """Custom Message 20010 for querying stations"""
     
     MSGLEN  = 21
@@ -30,10 +29,10 @@ class Message20010(BigEndianStructure, MessageBase):
         return cls.from_buffer_copy(byte_buffer)
 
     def __init__(self, byte_buffer=None):
-        self.has_station_number_field = True
+        pass
 
     def encode(self):
         return bytes(self)
 
-    def dump(self):
-        pprint(self)
+    def getStationId(self):
+       return self.station_number
