@@ -19,6 +19,8 @@ So far the following messages have been implemented which should enable basic co
 - 20000 [Private message for EO Pan and Tilt functionality]
 - 20010 [Private message for query request]
 - 20020 [Private message for query response]
+- 20030 [Private message for mast command]
+- 20040 [Private message for mast status]
 
 > _*See further below for simple usage.*_
 
