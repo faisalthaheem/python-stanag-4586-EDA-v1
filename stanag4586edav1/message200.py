@@ -7,6 +7,8 @@ from ctypes import *
 from .message_base import MessageBase
 
 class Message200(MessageBase):
+    """Payload Steering Command - This message shall be used to steer any steerable payload located at the Station
+Number specified in the message"""
     MSGLEN  = 68
     MSGNULL = b"\x00" * MSGLEN
 

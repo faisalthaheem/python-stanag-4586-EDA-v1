@@ -7,6 +7,8 @@ from ctypes import *
 from .message_base import MessageBase
 
 class Message302(MessageBase):
+    """EO/IR/Laser Operating State - This message shall be used to report the operating state of the EO/IR payload by station to
+the CUCS"""
     MSGLEN  = 82
     MSGNULL = b"\x00" * MSGLEN
 

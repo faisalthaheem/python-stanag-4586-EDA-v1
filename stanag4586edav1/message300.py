@@ -7,7 +7,7 @@ from ctypes import *
 from .message_base import MessageBase
 
 class Message300(MessageBase):
-    
+    """Payload Configuration - This message shall be used to identify payload configuration by vehicle station"""
     MSGLEN  = 31
     MSGNULL = b"\x00" * MSGLEN
 
@@ -25,6 +25,7 @@ class Message300(MessageBase):
     PAYLOAD_TYPE_SMS = 11
     #51 to 255 vsm specific
     PAYLOAD_TYPE_MAST = 51
+    PAYLOAD_TYPE_LRF = 52
 
     
     _pack_ = 1
